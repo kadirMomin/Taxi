@@ -49,20 +49,20 @@
                     <div class="col-sm-6 col-lg-9">
                         <div class="menu_text">
                             <ul>
-                                <li><a href="index.html">AnaSayfa</a></li>                                                    
-                                <li><a href="#about">About</a></li>
-                                <li><a href="#booking">Booking</a></li>
-                                <li><a href="#contact">Contact Us</a></li>
-                                <li><a href="registration.jsp">Login</a></li>
+                                <li><a href="index.jsp">AnaSayfa</a></li>                                                    
+                                <li><a href="#about">Hakkımızda</a></li>
+                                <li><a href="#booking">Rezervasyon</a></li>
+                                <li><a href="#contact">iletişim</a></li>
+                                <li><a href="registration.jsp">Giriş Yap</a></li>
 
                                 <div id="myNav" class="overlay">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                     <div class="overlay-content">
-                                        <a href="index.jsp">Home</a>
-                                        <a href="#about">About</a>
-                                        <a href="#booking">Booking</a>
-                                        <a href="#contact">Contact Us</a>
-                                        <a href="registration.jsp">Login</a>
+                                        <a href="index.jsp">AnaSayfa</a>
+                                        <a href="#about">Hakkımızda</a>
+                                        <a href="#booking">Rezervasyon</a>
+                                        <a href="#contact">iletişim</a>
+                                        <a href="registration.jsp">Giriş Yap</a>
 
                                     </div>
                                 </div>
@@ -84,109 +84,27 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="book_now">
-                                        <h1 class="book_text">BOOK NOW</h1>
-                                        <h1 class="call_text">(+71) 1234567890</h1>
+                                        <h1 class="book_text">Telefon Numaramız</h1>
+                                        <h1 class="call_text">(+90) 5550999919</h1>
                                     </div>
                                     <div class="image_1"><img src="images/img-1.png"></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h1 class="booking_text">Book a City Taxi to your destination in town</h1>
                                     <div class="contact_bg">
                                         <div class="input_main">
                                             <div class="container">
-                                                <h2 class="request_text">Your everyday travel partner</h2>
-                                                <form action="/action_page.php">
-                                                    <div class="form-group">
-                                                        <input type="text" class="email-bt" placeholder="PICKUP" name="Name">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" class="email-bt" placeholder="DROP" name="Email">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" class="email-bt" placeholder="WHEN" name="Email">
-                                                    </div>
-                                                </form>
-                                            </div> 
+                                                <h2 class="request_text">Taksi çagırmak için Aşağıdaki buttonu tıklayın</h2>
+                                                <div class="send_bt"><a href="Taxicall.jsp">Taksi çagırma</a></div>
+                                            </div>
                                         </div>
-                                        <div class="send_bt"><a href="#">SEARCH</a></div>
+
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="book_now">
-                                        <h1 class="book_text">BOOK NOW</h1>
-                                        <h1 class="call_text">(+71) 1234567890</h1>
-                                    </div>
-                                    <div class="image_1"><img src="images/img-1.png"></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <h1 class="booking_text">Book a City Taxi to your destination in town</h1>
-                                    <div class="contact_bg">
-                                        <div class="input_main">
-                                            <div class="container">
-                                                <h2 class="request_text">Your everyday travel partner</h2>
-                                                <form action="/action_page.php">
-                                                    <div class="form-group">
-                                                        <input type="text" class="email-bt" placeholder="PICKUP" name="Name">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" class="email-bt" placeholder="DROP" name="Email">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" class="email-bt" placeholder="WHEN" name="Email">
-                                                    </div>
-                                                </form>
-                                            </div> 
-                                        </div>
-                                        <div class="send_bt"><a href="#">SEARCH</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="book_now">
-                                        <h1 class="book_text">BOOK NOW</h1>
-                                        <h1 class="call_text">(+71) 1234567890</h1>
-                                    </div>
-                                    <div class="image_1"><img src="images/car.png"></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <h1 class="booking_text">Book a City Taxi to your destination in town</h1>
-                                    <div class="contact_bg">
-                                        <div class="input_main">
-                                            <div class="container">
-                                                <h2 class="request_text">Your everyday travel partner</h2>
-                                                <form action="/action_page.php">
-                                                    <div class="form-group">
-                                                        <input type="text" class="email-bt" placeholder="PICKUP" name="Name">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" class="email-bt" placeholder="DROP" name="Email">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" class="email-bt" placeholder="WHEN" name="Email">
-                                                    </div>
-                                                </form>
-                                            </div> 
-                                        </div>
-                                        <div class="send_bt"><a href="#">SEARCH</a></div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-                        <i class="fa fa-angle-left"></i></a>
-                    </a>
-                    <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                    </a>
+
                 </div>
 
             </div>
@@ -195,33 +113,33 @@
         <!-- our taxis section start -->
         <div id="taxis" class="taxis_section layout_padding">
             <div class="container">
-                <h1 class="our_text">Our <span style="color: #f4db31;">Taxi</span></h1>
+                <h1 class="our_text">Çeşitli<span style="color: #f4db31;"> Takslerimiz</span></h1>
                 <div class="taxis_section_2">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="taxi_main">
                                 <div class="round_1">01</div>
-                                <h2 class="carol_text">CAR 1</h2>
-                                <p class="reader_text">act that a reader will be<br> 
-                                    distracted </p>
+                                <h2 class="carol_text">Vip Taksi</h2>
+                                <p class="reader_text">V.I.P. taksi hizmetimizle, seyahatinizi lüks ve konforlu<br> 
+                                    Size geçtirir </p>
                                 <div class="images_2"><a href="#"><img src="images/img-2.png"></a></div>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="taxi_main">
                                 <div class="round_1">02</div>
-                                <h2 class="carol_text">CAR 2</h2>
-                                <p class="reader_text">act that a reader will be<br> 
-                                    distracted </p>
+                                <h2 class="carol_text">Orta Taksi</h2>
+                                <p class="reader_text">Orta sınıf taksi seçeneğimiz, bütçenizi korurken <br> 
+                                   konforlu bir yolculuk sunar. </p>
                                 <div class="images_2"><img src="images/img-2.png"></a></div>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="taxi_main">
                                 <div class="round_1">03</div>
-                                <h2 class="carol_text">CAR 3</h2>
-                                <p class="reader_text">act that a reader will be<br> 
-                                    distracted </p>
+                                <h2 class="carol_text">Normal Taksi</h2>
+                                <p class="reader_text">Normal taksi hizmetimizle her zaman güvenilir ve uygun fiyatlı<br> 
+                                      bir ulaşım seçeneğine sahip olun. </p>
                                 <div class="images_2"><img src="images/img-2.png"></a></div>
                             </div>
                         </div>
@@ -234,59 +152,26 @@
         <div id="booking" class="ride_section layout_padding">
             <div class="container">
                 <div class="ride_main">
-                    <h1 class="ride_text">Why Ride <span style="color: #f4db31;">With taxi</span></h1>
+                    <h1 class="ride_text"><span style="color: #f4db31;">Hakkımız</span></h1>
                 </div>
             </div>
         </div>
-        <div class="ride_section_2 layout_padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="image_3"><img src="images/img-3.png"></div>
-                    </div>
-                    <div class="col-sm-8">
-                        <h1 class="cabe_text">Taxi for Every Pocket</h1>
-                        <p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as It is a long established fact that a reader will be distracted by the readable c</p>
-                        <div class="book_bt"><a href="#">BOOK NOW</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h1 class="secure_text">Secure and Safer Rides</h1>
-                        <p class="long_text_2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as It is a long established fact that a reader will be distracted by the readable c</p>
-                        <div class="book_bt_2"><a href="#">BOOK NOW</a></div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="image_3"><img src="images/img-4.png"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="ride_section_2 layout_padding" id="about">
+            
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="image_3"><img src="images/img-5.png"></div>
                     </div>
                     <div class="col-sm-8">
-                        <h1 class="cabe_text">Taxi for Every Pocket</h1>
-                        <p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as It is a long established fact that a reader will be distracted by the readable c</p>
-                        <div class="book_bt"><a href="#">BOOK NOW</a></div>
+                        <h1 class="cabe_text">Her Bütçeye Uygun Taksi</h1>
+                        <p class="long_text">Biz <span style="font-family: sans-serif; font-weight: 900"> Kadir Taksi</span> olarak, seyahatlerinizi güvenli ve konforlu hale getirmek için buradayız. [Şirket Adı], yılların verdiği deneyimle sizlere en iyi taksi hizmetini sunmaktadır. Müşteri memnuniyeti ve güvenliği bizim önceliğimizdir. Sürücülerimiz profesyonel ve deneyimlidir. Her yolculuğunuzda sizi istediğiniz yere güvenli bir şekilde ulaştırmak için buradayız. Bizimle seyahat ederek konforlu ve hızlı bir yolculuk deneyimi yaşayın. 
+                            İhtiyacınız olduğunda bize ulaşın ve hizmetlerimizin tadını çıkarın.</p>
+                        <div class="send_bt"><a href="Taxicall.jsp">Hemen Taksi çagır</a></div>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h1 class="secure_text">Secure and Safer Rides</h1>
-                        <p class="long_text_2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as It is a long established fact that a reader will be distracted by the readable c</p>
-                        <div class="book_bt_2"><a href="#">BOOK NOW</a></div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="image_3"><img src="images/img-5.png"></div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
         <!-- why ride section end -->
         <!-- location section start -->
@@ -352,20 +237,20 @@
     <script src="js/owl.carousel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script>
-                    $(document).ready(function () {
-                        $(".fancybox").fancybox({
-                            openEffect: "none",
-                            closeEffect: "none"
-                        });
+                                    $(document).ready(function () {
+                                        $(".fancybox").fancybox({
+                                            openEffect: "none",
+                                            closeEffect: "none"
+                                        });
 
-                        $(".zoom").hover(function () {
+                                        $(".zoom").hover(function () {
 
-                            $(this).addClass('transition');
-                        }, function () {
+                                            $(this).addClass('transition');
+                                        }, function () {
 
-                            $(this).removeClass('transition');
-                        });
-                    });
+                                            $(this).removeClass('transition');
+                                        });
+                                    });
     </script> 
     <script>
         function openNav() {
