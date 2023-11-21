@@ -24,7 +24,7 @@
                     <input type="text" placeholder="Kullancı" name="name" required>
                     <p>Email</p>
                     <input type="text" placeholder="Email" name="email" required>
-                    <p>Password</p>
+                    <p>Şifre</p>
                     <input type="password" placeholder="Password" name="password"
                            required> <input type="submit" value="kaydol"> <a
                            href="index.jsp">Daha önce kaydoldunuz mu?</a>

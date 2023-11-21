@@ -1,6 +1,6 @@
 <%-- 
     Document   : Taxicall
-    Created on : 2 nov. 2023, 13:31:44
+    Created on : 11 nov. 2023, 13:31:44
     Author     : hp
 --%>
 
@@ -75,24 +75,24 @@
             </div>
         </div><br><br><br><br><br>
         <div class="taxi-form-container">
-            <h2>Taksi Çağırma Formu</h2>
-            <form action="" method="Post">
+            <h2>Çağırmalar Gör</h2>
+            <form>
                 <table class="table taxi-table">
                     <tr>
-                        <td><strong>Adı ve Soyadınız:</strong></td>
-                        <td><input type="text" id="clientName" name="clientName" placeholder="Adı ve Soyadınız"></td>
+                        <td><strong>Müşterini Adı:</strong></td>
+                        <td><input type="text" id="clientName" name="clientName" placeholder="Adınız"></td>
                     </tr>
                     <tr>
-                        <td><strong>Tam Adresınız :</strong></td>
-                        <td> <textarea class="form-input" id="contact-form-message-3" name="Adresiniz" data-constraints="@Required" placeholder="Tam Adresınız "></textarea></td>
+                        <td><strong>Adres:</strong></td>
+                        <td> <textarea class="form-input" id="contact-form-message-3" name="Adresiniz" data-constraints="@Required"></textarea></td>
                     </tr>
                                         <tr>
-                        <td><strong>Müşteri Telefonu:</strong></td>
+                        <td><strong>Müşteri Telefonunu:</strong></td>
                         <td><input type="text" id="clientName" name="clientName" placeholder="Telefonunuz"></td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <button type="submit" class="btn btn-primary">Taksi Çağır</button>
+                            <button type="submit" class="btn btn-primary">Kabul Et</button>
                         </td>
                     </tr>
                 </table>

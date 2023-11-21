@@ -53,7 +53,7 @@
                                 <li><a href="#about">Hakkımızda</a></li>
                                 <li><a href="#booking">Rezervasyon</a></li>
                                 <li><a href="#contact">iletişim</a></li>
-                                <li><a href="registration.jsp">Giriş Yap</a></li>
+                                <li><a href="login.jsp">Giriş Yap</a></li>
 
                                 <div id="myNav" class="overlay">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -62,7 +62,7 @@
                                         <a href="#about">Hakkımızda</a>
                                         <a href="#booking">Rezervasyon</a>
                                         <a href="#contact">iletişim</a>
-                                        <a href="registration.jsp">Giriş Yap</a>
+                                        <a href="login.jsp">Giriş Yap</a>
 
                                     </div>
                                 </div>
@@ -84,8 +84,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="book_now">
-                                        <h1 class="book_text">Telefon Numaramız</h1>
-                                        <h1 class="call_text">(+90) 5550999919</h1>
+                                        
+                                        <h1 class="call_text"><a href="Driver .jsp">Şöfer kısımı</a></h1>
                                     </div>
                                     <div class="image_1"><img src="images/img-1.png"></div>
                                 </div>
@@ -94,7 +94,7 @@
                                         <div class="input_main">
                                             <div class="container">
                                                 <h2 class="request_text">Taksi çagırmak için Aşağıdaki buttonu tıklayın</h2>
-                                                <div class="send_bt"><a href="Taxicall.jsp">Taksi çagırma</a></div>
+                                                <div class="send_bt"><a href="Taxicall.jsp">Taksi çagır</a></div>
                                             </div>
                                         </div>
 
@@ -130,7 +130,7 @@
                                 <div class="round_1">02</div>
                                 <h2 class="carol_text">Orta Taksi</h2>
                                 <p class="reader_text">Orta sınıf taksi seçeneğimiz, bütçenizi korurken <br> 
-                                   konforlu bir yolculuk sunar. </p>
+                                    konforlu bir yolculuk sunar. </p>
                                 <div class="images_2"><img src="images/img-2.png"></a></div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                                 <div class="round_1">03</div>
                                 <h2 class="carol_text">Normal Taksi</h2>
                                 <p class="reader_text">Normal taksi hizmetimizle her zaman güvenilir ve uygun fiyatlı<br> 
-                                      bir ulaşım seçeneğine sahip olun. </p>
+                                    bir ulaşım seçeneğine sahip olun. </p>
                                 <div class="images_2"><img src="images/img-2.png"></a></div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
             </div>
         </div>
         <div class="ride_section_2 layout_padding" id="about">
-            
+
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
@@ -171,7 +171,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
         <!-- why ride section end -->
         <!-- location section start -->
@@ -181,7 +181,7 @@
                     <div class="row">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-5">
-                            <div class="download_text">DOWNLOAD<br><span style="color: #fffcf4;">OUR APP TODAY</span></div>
+                            <div class="download_text">Indir<br><span style="color: #fffcf4;">UYGULAMAMIZ</span></div>
                         </div>
                         <div class="col-sm-3">
                             <div class="image_7"><img src="images/img-7.png"></div>
@@ -197,27 +197,23 @@
                 <div class="footer_section_2">
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-3">
-                            <h2 class="account_text">Address</h2>
-                            <p class="ipsum_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, </p>
+                            <h2 class="account_text">Adres</h2>
+                            <p class="ipsum_text">Ostim, 100. Yıl Blv 55/F, 06374 Ostim Osb/Yenimahalle/Ankara</p>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-lg-3">
-                            <h2 class="account_text">Links</h2>
-                            <div class="image-icon"><img src="images/bulit-icon.png"><span class="fb_text"><a href="#">Home</span></a></div>
-                            <div class="image-icon"><img src="images/bulit-icon.png"><span class="fb_text"><a href="#">About</span></a></div>
-                            <div class="image-icon"><img src="images/bulit-icon.png"><span class="fb_text"><a href="#">Booking</span></a></div>
-                            <div class="image-icon"><img src="images/bulit-icon.png"><span class="fb_text"><a href="#">Contact Us</span></a></div>
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <h2 class="account_text">Bağlantılar</h2>
+                            <div class="image-icon"><img src="images/bulit-icon.png"><span class="fb_text"><a href="#">Ana Sayfa</span></a></div>
+                            <div class="image-icon"><img src="images/bulit-icon.png"><span class="fb_text"><a href="#">Hakkında</span></a></div>
+                            <div class="image-icon"><img src="images/bulit-icon.png"><span class="fb_text"><a href="#">Rezervasyon</span></a></div>
+                            <div class="image-icon"><img src="images/bulit-icon.png"><span class="fb_text"><a href="#">Bize Ulaşın</span></a></div>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-lg-3">
-                            <h2 class="account_text">Follow Us</h2>
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <h2 class="account_text">Bizi Takip Edin</h2>
                             <div class="image-icon"><img src="images/fb-icon.png"><span class="fb_text"><a href="#">Facebook</a></span></div>
                             <div class="image-icon"><img src="images/twitter-icon.png"><span class="fb_text"><a href="#">Twitter</a></span></div>            
                             <div class="image-icon"><img src="images/instagram-icon.png"><span class="fb_text"><a href="#">Instagram</a></span></div>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-lg-3">
-                            <h2 class="adderess_text">Newsletter</h2>
-                            <input type="" class="email_text" placeholder="Enter Your Email" name="Enter Your Email">
-                            <button class="subscribr_bt">SUBSCRIBE</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
