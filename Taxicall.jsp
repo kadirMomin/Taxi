@@ -4,6 +4,10 @@
     Author     : hp
 --%>
 
+<%@page import="com.Calls"%>
+<%@page import="newpackage.ConnectionPro"%>
+<%@page import="newpackage.UserDatabase"%>
+<%@page import="com.Driver"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -54,6 +58,17 @@
                                 <li><a href="#booking">Rezervasyon</a></li>
                                 <li><a href="#contact">iletişim</a></li>
                                 <li><a href="registration.jsp">Giriş Yap</a></li>
+                                    <%/*
+                                           String name = (String) session.getAttribute("name");
+                                           String email = (String) session.getAttribute("email");
+                                           if (email == null) {
+                                               response.sendRedirect("login.jsp");
+                                           } else {
+                                               out.println("Hoşgeldin " + name);
+                                           }
+                                         */
+
+                                    %>
 
                                 <div id="myNav" class="overlay">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -75,8 +90,9 @@
             </div>
         </div><br><br><br><br><br>
         <div class="taxi-form-container">
-            <h2>Taksi Çağırma Formu</h2>
-            <form action="" method="Post">
+
+            <h2>Taksi Çağırmak için Aşağıdaki Formu yollanın </h2>
+            <form action="CallServet" method="POST">
                 <table class="table taxi-table">
                     <tr>
                         <td><strong>Adı ve Soyadınız:</strong></td>
@@ -86,9 +102,9 @@
                         <td><strong>Tam Adresınız :</strong></td>
                         <td> <textarea class="form-input" id="contact-form-message-3" name="Adresiniz" data-constraints="@Required" placeholder="Tam Adresınız "></textarea></td>
                     </tr>
-                                        <tr>
+                    <tr>
                         <td><strong>Müşteri Telefonu:</strong></td>
-                        <td><input type="text" id="clientName" name="clientName" placeholder="Telefonunuz"></td>
+                        <td><input type="text" id="clientName" name="Phone" placeholder="Telefonunuz"></td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -97,6 +113,18 @@
                     </tr>
                 </table>
             </form>
+            <p><%
+                UserDatabase regUser = new UserDatabase(ConnectionPro.getConnection());
+                Driver assignedDriver = regUser.getAvailableDriver();
+
+                if (assignedDriver == null) {
+                    out.print("Üzgünüz, şu anda uygun sürücü yok.");
+                } else {
+                    out.print("Sürücü atandı: " + assignedDriver.getName() + ", Plaka: " + assignedDriver.getPlate());
+
+                }
+
+                %></p>
         </div>
 
     </body>
