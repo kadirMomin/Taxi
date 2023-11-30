@@ -4,6 +4,13 @@
     Author     : hp
 --%>
 
+
+<%@page import="java.util.List"%>
+<%@page import="com.Calls"%>
+<%@page import="newpackage.ConnectionPro"%>
+<%@page import="newpackage.UserDatabase"%>
+<%@page import="com.sun.jdi.connect.spi.Connection"%>
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -54,6 +61,7 @@
                                 <li><a href="#booking">Rezervasyon</a></li>
                                 <li><a href="#contact">iletişim</a></li>
                                 <li><a href="registration.jsp">Giriş Yap</a></li>
+                                <li><a href="logout.jsp">Çıkış Yap</a></li>
 
                                 <div id="myNav" class="overlay">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -63,6 +71,7 @@
                                         <a href="#booking">Rezervasyon</a>
                                         <a href="#contact">iletişim</a>
                                         <a href="registration.jsp">Giriş Yap</a>
+                                        <li><a style="color: #cb2027; margin-left: 20px;" href="logout.jsp">Çıkış Yap</a></li>
 
                                     </div>
                                 </div>
@@ -75,29 +84,30 @@
             </div>
         </div><br><br><br><br><br>
         <div class="taxi-form-container">
-            <h2>Çağırmalar Gör</h2>
-            <form>
-                <table class="table taxi-table">
-                    <tr>
-                        <td><strong>Müşterini Adı:</strong></td>
-                        <td><input type="text" id="clientName" name="clientName" placeholder="Adınız"></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Adres:</strong></td>
-                        <td> <textarea class="form-input" id="contact-form-message-3" name="Adresiniz" data-constraints="@Required"></textarea></td>
-                    </tr>
-                                        <tr>
-                        <td><strong>Müşteri Telefonunu:</strong></td>
-                        <td><input type="text" id="clientName" name="clientName" placeholder="Telefonunuz"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <button type="submit" class="btn btn-primary">Kabul Et</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+                    <h2 style="text-align: center; font-family: sans-serif; font-size: 40px; ">Çağırmalar Gör</h2><br><br>
+                    <div class="container text-center">
+                        <%
+                            UserDatabase db = new UserDatabase(ConnectionPro.getConnection());
+                            List<Calls> callList = db.getAllCalls();
+                        %>
+                        <table style="text-align:center; width: 100%; text-align: left;" border="1">                           
+                            <tr>                               
+                                <th>Müşteri Adı</th>
+                                <th>Adres:</th>
+                                <th>Müşteri Telefonunu:</th>
+                                <th>Atan sürücü</th>
+                            </tr>
+                            <% for (Calls call : callList) {%>
+                            <tr>                             
+                                <td><%= call.getClientName()%></td>
+                                <td><%= call.getAddress()%></td>
+                                <td><%= call.getPhone()%></td>    
+                                 <td><%= call.getAssignedDriverName()%></td>
+                            </tr>
+                            <% }%>      
+                        </table><br>                          
+                          <button type="submit" class="btn btn-primary" name="kabuller">Kabul Et</button>
+           </div>
         </div>
-
     </body>
 </html>

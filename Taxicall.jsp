@@ -100,7 +100,7 @@
                     </tr>
                     <tr>
                         <td><strong>Tam Adresınız :</strong></td>
-                        <td> <textarea class="form-input" id="contact-form-message-3" name="Adresiniz" data-constraints="@Required" placeholder="Tam Adresınız "></textarea></td>
+                        <td> <textarea class="form-input" id="contact-form-message-3" name="address" data-constraints="@Required" placeholder="Tam Adresınız "></textarea></td>
                     </tr>
                     <tr>
                         <td><strong>Müşteri Telefonu:</strong></td>
@@ -111,21 +111,32 @@
                             <button type="submit" class="btn btn-primary">Taksi Çağır</button>
                         </td>
                     </tr>
+
                 </table>
             </form>
-            <p><%
-                UserDatabase regUser = new UserDatabase(ConnectionPro.getConnection());
-                Driver assignedDriver = regUser.getAvailableDriver();
-
-                if (assignedDriver == null) {
-                    out.print("Üzgünüz, şu anda uygun sürücü yok.");
-                } else {
-                    out.print("Sürücü atandı: " + assignedDriver.getName() + ", Plaka: " + assignedDriver.getPlate());
-
-                }
-
-                %></p>
+            <p>
+                <%
+                    UserDatabase regUser = new UserDatabase(ConnectionPro.getConnection());
+                    String clientName = request.getParameter("clientName");
+                    String address = request.getParameter("address");
+                    String phone = request.getParameter("phone");
+                    Calls call = new Calls(clientName, address, phone); // Formdan alınan verilerle Calls nesnesi oluşturuluyor.
+                    Driver assignedDriver = regUser.assignDriverToCall(call);
+                   if (clientName == null || clientName.isEmpty() || address == null || address.isEmpty() || phone == null || phone.isEmpty()){
+                      out.print("lutfen bos alan doldurun!!!");
+                    
+                    if (assignedDriver != null) {
+                        // Sürücü atandı, çağrıyı kaydet
+                        regUser.saveCall(call);
+                        out.print("Sürücü atandı: " + assignedDriver.getName() + ", Plaka: " + assignedDriver.getPlate() + " yolda");
+                    } }else {
+                        // Müsait sürücü yok
+                        out.print("Üzgünüz, şu anda uygun sürücü yok.");
+                    }
+                %>
+            </p>
         </div>
+
 
     </body>
 </html>
