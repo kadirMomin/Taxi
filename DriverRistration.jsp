@@ -1,8 +1,9 @@
 <%-- 
-    Document   : registration
-    Created on : Oct 22, 2023, 8:51:04 PM
+    Document   : Driverlogin
+    Created on : Dec 3, 2023, 9:22:00 PM
     Author     : hp
 --%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,17 +19,14 @@
         <div class="container">
             <div class="regbox box">
                 <img class="avatar" src="images/collaboration.png">
-                <h1>Hesap Oluştur</h1>
+                <h1>Driver Hesabın Oluştur</h1>
                 <form action="RegisterServlet" method="post">
-                    <p>Kullancı</p>
+                    <p>Name</p>
                     <input type="text" placeholder="Kullancı" name="name" required>
-                    <p>Email</p>
-                    <input type="text" placeholder="Email" name="email" required>
-                    <p>Şifre</p>
-                    <input type="password" placeholder="Password" name="password"
-                           required> <input type="submit" value="kaydol"> <a
-                           href="login.jsp">Daha önce kaydoldunuz mu?</a>
-                    <a href="DriverRistration.jsp">Şöferseniz bu Link Tıklanyarak kaydolun?</a>
+                    <p>Plate</p>
+                    <input type="text" placeholder="Email" name="plate" required>
+                    <input type="submit" value="kaydol"> <a
+                           href="index.jsp">Daha önce kaydoldunuz mu?</a>
                 </form>
             </div>
         </div>

@@ -108,7 +108,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <button type="submit" class="btn btn-primary">Taksi Çağır</button>
+                            <button type="submit" class="btn btn-primary aziz_btn">Taksi Çağır</button>
                         </td>
                     </tr>
 
@@ -116,27 +116,33 @@
             </form>
             <p>
                 <%
-                    UserDatabase regUser = new UserDatabase(ConnectionPro.getConnection());
-                    String clientName = request.getParameter("clientName");
-                    String address = request.getParameter("address");
-                    String phone = request.getParameter("phone");
-                    Calls call = new Calls(clientName, address, phone); // Formdan alınan verilerle Calls nesnesi oluşturuluyor.
-                    Driver assignedDriver = regUser.assignDriverToCall(call);
-                   if (clientName == null || clientName.isEmpty() || address == null || address.isEmpty() || phone == null || phone.isEmpty()){
-                      out.print("lutfen bos alan doldurun!!!");
-                    
-                    if (assignedDriver != null) {
-                        // Sürücü atandı, çağrıyı kaydet
-                        regUser.saveCall(call);
-                        out.print("Sürücü atandı: " + assignedDriver.getName() + ", Plaka: " + assignedDriver.getPlate() + " yolda");
-                    } }else {
-                        // Müsait sürücü yok
-                        out.print("Üzgünüz, şu anda uygun sürücü yok.");
+                    String assignedDriverInfo = (String) session.getAttribute("assignedDriverInfo");
+                    if (assignedDriverInfo != null) {
+                        out.print(assignedDriverInfo);
+                        session.removeAttribute("assignedDriverInfo");// Bilgiyi gösterdikten sonra kaldır
+                    }
+                    else{
+                       out.print("bos surucumuz yok olursa birazdan bildiriz!! ");
+                       
                     }
                 %>
+
             </p>
         </div>
-
-
+        <script>
+            var azizBtn = document.querySelector(".aziz_btn");
+            azizBtn.addEventListener("click", function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "server.jsp", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // İstek başarılı olduğunda burası çalışır
+                        console.log(this.responseText);
+                    }
+                };
+                xhr.send("clientName=value1&address=value2&phone=value3");
+            });
+        </script>
     </body>
 </html>

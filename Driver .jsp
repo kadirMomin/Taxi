@@ -107,6 +107,7 @@
                             <% }%>      
                         </table><br>                          
                           <button type="submit" class="btn btn-primary" name="kabuller">Kabul Et</button>
+                          <button type="submit" class="btn btn-primary" name="kabuller">Boştayım</button>
            </div>
         </div>
     </body>
