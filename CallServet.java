@@ -4,19 +4,21 @@
  */
 package newpackage;
 
+import com.Calls;
+import com.Driver;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author hp
  */
-public class LoginServlet extends HttpServlet {
+public class CallServet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,38 +33,40 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            // HTML başlangıcı ve başlık
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet CallServlet</title>");
             out.println("</head>");
             out.println("<body>");
 
-            String lEmail = request.getParameter("email");
-            String lPass = request.getParameter("password");
+            // Formdan veri al
+            String clientName = request.getParameter("clientName");
+            String address = request.getParameter("address");
+            String phone = request.getParameter("Phone");
 
-            UserDatabase db = new UserDatabase(ConnectionPro.getConnection());
-            User user = db.logUser(lEmail, lPass);
+            // Calls nesnesi oluştur
+            Calls call = new Calls(clientName, address, phone);
 
-            if (user != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("user", user);
-                response.sendRedirect("index.jsp");
-            } else {
-                boolean isValidUser = false;
-                if (!isValidUser) {
-                    request.setAttribute("loginError", "Geçersiz kimlik bilgileri veya kayıtlı kullanıcı yok.");
-                    // İstekle birlikte giriş sayfasına yönlendirme yapın
-                    request.getRequestDispatcher("/login.jsp").forward(request, response);
-                }
+            // Veritabanı bağlantısı ve sürücü atama
+            UserDatabase regUser = new UserDatabase(ConnectionPro.getConnection());
+            Driver assignedDriver = regUser.assignDriverToCall(call);
+          
+            if (assignedDriver != null) {
+                  regUser.saveCall(call);
+                String driverInfo = "Sürücü atandı: " + assignedDriver.getName() + ", Plaka: " + assignedDriver.getPlate() + " yolda";
+                request.getSession().setAttribute("assignedDriverInfo", driverInfo);
             }
+
+            response.sendRedirect("Taxicall.jsp");
+
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

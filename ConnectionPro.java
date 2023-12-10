@@ -13,10 +13,10 @@ public class ConnectionPro {
     public static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase?useUnicode=true&characterEncoding=UTF-8&useSSL=false", "root", "");
 
-        } catch(ClassNotFoundException | SQLException e){
-            System.out.println("------"+e);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("------" + e);
         }
         return con;
     }

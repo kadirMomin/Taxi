@@ -4,12 +4,21 @@
     Author     : hp
 --%>
 
+<%@page import="com.sun.jdi.connect.spi.Connection"%>
 <%@page import="com.Calls"%>
 <%@page import="newpackage.ConnectionPro"%>
 <%@page import="newpackage.UserDatabase"%>
 <%@page import="com.Driver"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
+<% 
+    if (session == null || session.getAttribute("user") == null) {
+        // Kullanıcı giriş yapmamış, giriş sayfasına yönlendir
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -59,15 +68,8 @@
                                 <li><a href="#contact">iletişim</a></li>
                                 <li><a href="registration.jsp">Giriş Yap</a></li>
                                     <%/*
-                                           String name = (String) session.getAttribute("name");
-                                           String email = (String) session.getAttribute("email");
-                                           if (email == null) {
-                                               response.sendRedirect("login.jsp");
-                                           } else {
-                                               out.println("Hoşgeldin " + name);
-                                           }
-                                         */
-
+                                        String name = (String) session.getAttribute("name");
+                                        out.println("Hoşgeldin " + name);*/
                                     %>
 
                                 <div id="myNav" class="overlay">
@@ -115,15 +117,14 @@
                 </table>
             </form>
             <p>
-                <%
+                <%                   
                     String assignedDriverInfo = (String) session.getAttribute("assignedDriverInfo");
                     if (assignedDriverInfo != null) {
                         out.print(assignedDriverInfo);
                         session.removeAttribute("assignedDriverInfo");// Bilgiyi gösterdikten sonra kaldır
-                    }
-                    else{
-                       out.print("bos surucumuz yok olursa birazdan bildiriz!! ");
-                       
+                    } else {
+                        out.print("bos surucumuz yok olursa birazdan bildiriz!! ");
+
                     }
                 %>
 

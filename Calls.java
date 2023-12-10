@@ -4,24 +4,43 @@
  */
 package com;
 
-import java.sql.*;
-
+/*import com.DriverManager;
+import java.sql.*;*/
 /**
  *
  * @author hp
  */
 public class Calls {
 
-    int ID;
     String clientName;
     String address;
+    String Phone;
+    private String assignedDriverName;
 
-    public int getID() {
-        return ID;
+    public String getAssignedDriverName() {
+        return this.assignedDriverName;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setAssignedDriverName(String name) {
+        this.assignedDriverName = name;
+    }
+
+    public Calls(String clientName, String address, String phone) {
+        this.clientName = clientName;
+        this.address = address;
+        this.Phone = phone;
+    }
+
+    public Calls() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String Phone) {
+        this.Phone = Phone;
     }
 
     public String getClientName() {
@@ -32,30 +51,32 @@ public class Calls {
         this.clientName = clientName;
     }
 
-    public String getLocation() {
+    public String getAddress() {
         return address;
     }
 
-    public void setLocation(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public void callTaxi(String name, String address, String dt) {
-        String sql = "INSERT INTO `Calls`(`ID`, `ClientsName`, `address`, `Datetime`) VALUES(NULL, '" + name + "', '" + address + "', '" + dt + "')";
+}
+/*
+    public void callTaxi(String ClientsName, String address, int Phone) {
+        String sql = "INSERT INTO `calltaksi`(`ID`, `ClientsName`, `address`, `Phone`) VALUES(NULL, '" + ClientsName + "', '" + address + "', '" + Phone + "')";
         System.out.println("sql = " + sql);
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con;
             con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/mydatabase/Calltaksi", "root", "");
+                    "jdbc:mysql://localhost:3306/mydatabase/calltaksi", "root", "");
             Statement stmt = con.createStatement();
             stmt.execute(sql);
             con.close();
         } catch (ClassNotFoundException | SQLException e) {
         }
-    }
-
+    }*/
+ /*
     public void addDriver(String dname, int id) {
         String sql = "UPDATE Calls SET DriversName='" + dname + "' WHERE ID=" + id;
         System.out.println("sql = " + sql);
@@ -69,5 +90,4 @@ public class Calls {
             con.close();
         } catch (ClassNotFoundException | SQLException e) {
         }
-    }
-}
+    }*/

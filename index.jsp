@@ -51,9 +51,13 @@
                             <ul>
                                 <li><a href="index.jsp">AnaSayfa</a></li>                                                    
                                 <li><a href="#about">Hakkımızda</a></li>
-                                <li><a href="#booking">Rezervasyon</a></li>
+                                <li><a href="#booking">Rezervasyon </a></li>
                                 <li><a href="#contact">iletişim</a></li>
                                 <li><a href="login.jsp">Giriş Yap</a></li>
+                                    <%/*
+                                        String name = (String) session.getAttribute("name");
+                                        out.println("Hoşgeldin " + name);*/
+                                    %>
 
                                 <div id="myNav" class="overlay">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -84,7 +88,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="book_now">
-                                        
+
                                         <h1 class="call_text"><a href="Driver .jsp">Şöfer kısımı</a></h1>
                                     </div>
                                     <div class="image_1"><img src="images/img-1.png"></div>
