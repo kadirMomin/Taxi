@@ -4,19 +4,19 @@
  */
 package newpackage;
 
+import com.Driver;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author hp
  */
-public class LoginServlet extends HttpServlet {
+public class driverServet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,32 +31,25 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet driverServet</title>");
             out.println("</head>");
             out.println("<body>");
+            String name = request.getParameter("name");
+            String plate = request.getParameter("plate");
 
-            String lEmail = request.getParameter("email");
-            String lPass = request.getParameter("password");
+            UserDatabase userDb = new UserDatabase(ConnectionPro.getConnection());
+            boolean isValidDriver = userDb.validateDriver(name, plate);
 
-            UserDatabase db = new UserDatabase(ConnectionPro.getConnection());
-            User user = db.logUser(lEmail, lPass);
+            if (isValidDriver) {
 
-            if (user != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("user", user);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("Driver.jsp"); // Eşleşme varsa Driver sayfasına yönlendir
             } else {
-                
-                boolean isValidUser = false;
-                if (!isValidUser) {
-                    request.setAttribute("loginError", "Geçersiz kimlik bilgileri veya kayıtlı kullanıcı yok.");
-                    // İstekle birlikte giriş sayfasına yönlendirme yapın
-                    request.getRequestDispatcher("/login.jsp").forward(request, response);
-                }
+                // Geçersiz sürücü durumunda hata mesajı veya başka bir sayfaya yönlendirme
+                response.getWriter().println("Invalid Driver Credentials");
             }
             out.println("</body>");
             out.println("</html>");

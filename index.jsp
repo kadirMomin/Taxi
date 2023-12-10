@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,6 +19,50 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
         <!-- site metas -->
         <title>TAXI</title>
+        <style>
+            /* Açılır Menü İçin CSS */ 
+            
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .menu_text > ul > li {
+                vertical-align: middle; /* Diğer menü öğeleriyle hizalamak için */
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .dropbtn {
+                display: inline-block;
+                text-decoration: none;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+
+        </style>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">	
@@ -51,7 +96,13 @@
                             <ul>
                                 <li><a href="index.jsp">AnaSayfa</a></li>                                                    
                                 <li><a href="#about">Hakkımızda</a></li>
-                                <li><a href="#booking">Rezervasyon </a></li>
+                                <li class="dropdown">
+                                    <a href="#booking" class="dropbtn">Rezervasyon &#9662;</a>
+                                    <div class="dropdown-content">
+                                        <a href="Driverlogin.jsp">Şöfer kısımı</a>
+
+                                    </div>
+                                </li>
                                 <li><a href="#contact">iletişim</a></li>
                                 <li><a href="login.jsp">Giriş Yap</a></li>
                                     <%/*
@@ -79,7 +130,10 @@
             </div>
         </div>
         <!-- header section end -->
-        <!-- banner section start -->
+        <!-- banner section start  <div class="book_now">
+
+                                        <h1 class="call_text"><a href="Driver .jsp">Şöfer kısımı</a></h1>
+                                    </div>-->
         <div class="banner_section">
             <div class="container-fluid">
                 <div id="main_slider" class="carousel slide" data-ride="carousel">
@@ -87,10 +141,7 @@
                         <div class="carousel-item active">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="book_now">
 
-                                        <h1 class="call_text"><a href="Driver .jsp">Şöfer kısımı</a></h1>
-                                    </div>
                                     <div class="image_1"><img src="images/img-1.png"></div>
                                 </div>
                                 <div class="col-md-6">

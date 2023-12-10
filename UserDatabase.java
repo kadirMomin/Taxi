@@ -115,7 +115,7 @@ public class UserDatabase {
                 updatePst.setInt(1, assignedDriver.getID());
                 updatePst.executeUpdate();
             }
-           /* if (assignedDriver != null) {
+            /* if (assignedDriver != null) {
                 call.setAssignedDriverName(assignedDriver.getName());
             }
             return assignedDriver;*/
@@ -151,7 +151,7 @@ public class UserDatabase {
     }*/
     public List<Driver> getAllDrivers() {
         List<Driver> driverList = new ArrayList<>();
-        String sql = "SELECT * FROM driver"; 
+        String sql = "SELECT * FROM driver";
 
         try (PreparedStatement pst = con.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
 
@@ -172,4 +172,23 @@ public class UserDatabase {
         return driverList;
     }
 
+    public boolean validateDriver(String name, String plate) {
+        try {
+            String query = "SELECT * FROM driver WHERE name=? AND plate=?";
+            PreparedStatement pst = this.con.prepareStatement(query);
+            pst.setString(1, name);
+            pst.setString(2, plate);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+              
+                return true; // Eşleşme var
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // Eşleşme yok
+    }
 }
+
+

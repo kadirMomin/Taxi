@@ -28,7 +28,6 @@
                     <input type="password" placeholder="Password" name="password"
                            required> <input type="submit" value="kaydol"> <a
                            href="login.jsp">Daha önce kaydoldunuz mu?</a>
-                    <a href="DriverRistration.jsp">Şöferseniz bu Link Tıklanyarak kaydolun?</a>
                 </form>
             </div>
         </div>
