@@ -6,6 +6,19 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% String regError = (String) request.getAttribute("RegError");
+     if (regError != null) {%>
+<script>
+                alert("<%= regError%>");
+</script>
+<% } else {
+    String successMessage = (String) request.getAttribute("SuccessMessage");
+    if (successMessage != null) {%>
+<script>
+                alert("<%= successMessage%>");
+</script>
+<% }
+ }%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,6 +43,8 @@
                            href="login.jsp">Daha önce kaydoldunuz mu?</a>
                 </form>
             </div>
+
         </div>
     </body>
+
 </html>

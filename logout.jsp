@@ -12,8 +12,19 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
+        <% // Oturumu sonlandırma
             session.invalidate();
+
+            // Çerezleri sonlandırma
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                }
+            }
+
+            // Belirtilen sayfaya yönlendirme
             response.sendRedirect("index.jsp");
         %>
     </body>

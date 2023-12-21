@@ -10,10 +10,11 @@
 <%@page import="newpackage.UserDatabase"%>
 <%@page import="com.Driver"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
 
 <!DOCTYPE html>
-<% 
-    if (session == null || session.getAttribute("user") == null) {
+<%
+    if (session.getAttribute("user") == null) {
         // Kullanıcı giriş yapmamış, giriş sayfasına yönlendir
         response.sendRedirect("login.jsp");
         return;
@@ -67,10 +68,7 @@
                                 <li><a href="#booking">Rezervasyon</a></li>
                                 <li><a href="#contact">iletişim</a></li>
                                 <li><a href="registration.jsp">Giriş Yap</a></li>
-                                    <%/*
-                                        String name = (String) session.getAttribute("name");
-                                        out.println("Hoşgeldin " + name);*/
-                                    %>
+                                <li><a href="logout.jsp">Çıkış Yap</a></li>   
 
                                 <div id="myNav" class="overlay">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -80,6 +78,7 @@
                                         <a href="#booking">Rezervasyon</a>
                                         <a href="#contact">iletişim</a>
                                         <a href="registration.jsp">Giriş Yap</a>
+                                        <a href="logout.jsp">Çıkış Yap</a>
 
                                     </div>
                                 </div>
@@ -117,33 +116,18 @@
                 </table>
             </form>
             <p>
-                <%                   
+                <%
                     String assignedDriverInfo = (String) session.getAttribute("assignedDriverInfo");
                     if (assignedDriverInfo != null) {
                         out.print(assignedDriverInfo);
                         session.removeAttribute("assignedDriverInfo");// Bilgiyi gösterdikten sonra kaldır
                     } else {
-                        out.print("bos surucumuz yok olursa birazdan bildiriz!! ");
-
+                        out.print("bos surucumuz yok olursa birazdan bildiriz");
                     }
                 %>
 
             </p>
         </div>
-        <script>
-            var azizBtn = document.querySelector(".aziz_btn");
-            azizBtn.addEventListener("click", function () {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "server.jsp", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        // İstek başarılı olduğunda burası çalışır
-                        console.log(this.responseText);
-                    }
-                };
-                xhr.send("clientName=value1&address=value2&phone=value3");
-            });
-        </script>
+
     </body>
 </html>

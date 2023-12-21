@@ -6,7 +6,12 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%
+    if (session != null && session.getAttribute("isValidDriver") != null) {
+        response.sendRedirect("Driver.jsp"); // Oturum varsa ve kullanıcı girişi yapılmışsa, başka bir sayfaya yönlendir
+    } else {
+        // Oturum yoksa veya giriş yapılmamışsa normal işlemlere devam et
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,5 +34,8 @@
                 </form>
             </div>
         </div>
+        <%
+            } // JSP kod bloğunun sonu
+        %>
     </body>
 </html>

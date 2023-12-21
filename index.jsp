@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -105,10 +106,7 @@
                                 </li>
                                 <li><a href="#contact">iletişim</a></li>
                                 <li><a href="login.jsp">Giriş Yap</a></li>
-                                    <%/*
-                                        String name = (String) session.getAttribute("name");
-                                        out.println("Hoşgeldin " + name);*/
-                                    %>
+                                   
 
                                 <div id="myNav" class="overlay">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>

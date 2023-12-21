@@ -13,7 +13,6 @@
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -88,28 +87,52 @@
             <h2 style="text-align: center; font-family: sans-serif; font-size: 40px; ">Çağırmalar Gör</h2><br><br>
             <div class="container text-center">
                 <%
-                    UserDatabase db = new UserDatabase(ConnectionPro.getConnection());
-                    List<Calls> callList = db.getAllCalls();
+                    String assignedCustomerName = (String) request.getSession().getAttribute("assignedCustomerName");
+                    String assignedCustomerAddress = (String) request.getSession().getAttribute("assignedCustomerAddress");
+                    String assignedCustomerPhone = (String) request.getSession().getAttribute("assignedCustomerPhone");
                 %>
-                <table style="text-align:center; width: 100%; text-align: left;" border="1">                           
-                    <tr>                               
-                        <th>Müşteri Adı</th>
-                        <th>Adres:</th>
-                        <th>Müşteri Telefonunu:</th>
-                        <th>Atan sürücü</th>
-                    </tr>
-                    <% for (Calls call : callList) {%>
-                    <tr>                             
-                        <td><%= call.getClientName()%></td>
-                        <td><%= call.getAddress()%></td>
-                        <td><%= call.getPhone()%></td>    
-                        <td><%= call.getAssignedDriverName()%></td>
-                    </tr>
-                    <% }%>      
-                </table><br>                          
-                <button type="submit" class="btn btn-primary" name="kabuller">Kabul Et</button>
-                <button type="submit" class="btn btn-primary" name="kabuller">Boştayım</button>
+                <% if (assignedCustomerName != null && assignedCustomerAddress != null && assignedCustomerPhone != null) {%>
+                <h3>Atanan Müşteri Bilgileri</h3>
+                <p>Adı: <%= assignedCustomerName%></p>
+                <p>Adres: <%= assignedCustomerAddress%></p>
+                <p>Telefon: <%= assignedCustomerPhone%></p>
+                <% } else { %>
+                <p>Henüz atanmış bir müşteri yok.</p>
+                <% }%>
+                <br><br><br>
+
+                <button type="button" class="btn btn-primary"  onclick="updateDriverStatus()">Boştayım</button>
             </div>
         </div>
     </body>
+    <script>
+        function updateDriverStatus() {
+            var xhr = new XMLHttpRequest();
+
+            // Sunucu tarafındaki uygun URL'yi girin
+            var url = 'http://localhost:8082/updateDriverAvailabilityToZero';
+
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Sunucudan başarılı bir yanıt alındığında yapılacaklar
+                        alert('Durum başarıyla güncellendi.');
+                    } else {
+                        // Sunucudan hata yanıtı alındığında yapılacaklar
+                        alert('Durum güncellenemedi.');
+                    }
+                }
+            };
+
+            // Gönderilecek veri, eğer varsa
+            var params = ''; // Buraya göndermek istediğiniz parametreleri ekleyin (örneğin: 'driverId=1')
+
+            xhr.send(params);
+        }
+
+    </script>
+
 </html>
