@@ -11,12 +11,19 @@
 <%@page import="newpackage.UserDatabase"%>
 <%@page import="com.sun.jdi.connect.spi.Connection"%>
 <%@page import="java.sql.*"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
+<%
+    if (session.getAttribute("isValidDriver") == null) {
+        // Kullanıcı giriş yapmamış, giriş sayfasına yönlendir
+        response.sendRedirect("Driverlogin.jsp");
+        return;
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- basic -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -93,9 +100,9 @@
                 %>
                 <% if (assignedCustomerName != null && assignedCustomerAddress != null && assignedCustomerPhone != null) {%>
                 <h3>Atanan Müşteri Bilgileri</h3>
-                <p>Adı: <%= assignedCustomerName%></p>
-                <p>Adres: <%= assignedCustomerAddress%></p>
-                <p>Telefon: <%= assignedCustomerPhone%></p>
+                <p id="assignedCustomerName">Adı: <%= assignedCustomerName%></p>
+                <p id="assignedCustomerAddress">Adres: <%= assignedCustomerAddress%></p>
+                <p id="assignedCustomerPhone">Telefon: <%= assignedCustomerPhone%></p>
                 <% } else { %>
                 <p>Henüz atanmış bir müşteri yok.</p>
                 <% }%>
@@ -108,28 +115,26 @@
     <script>
         function updateDriverStatus() {
             var xhr = new XMLHttpRequest();
-
-            // Sunucu tarafındaki uygun URL'yi girin
-            var url = 'http://localhost:8082/updateDriverAvailabilityToZero';
-
+            var url = 'http://localhost:8082/webproject/Driver.jsp';
             xhr.open('POST', url, true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
-                        // Sunucudan başarılı bir yanıt alındığında yapılacaklar
                         alert('Durum başarıyla güncellendi.');
+
+                        // Kullanıcı bilgilerini sıfırla
+                        document.getElementById("assignedCustomerName").innerText = "Adı: ";
+                        document.getElementById("assignedCustomerAddress").innerText = "Adres: ";
+                        document.getElementById("assignedCustomerPhone").innerText = "Telefon: ";
                     } else {
-                        // Sunucudan hata yanıtı alındığında yapılacaklar
                         alert('Durum güncellenemedi.');
                     }
                 }
             };
 
-            // Gönderilecek veri, eğer varsa
-            var params = ''; // Buraya göndermek istediğiniz parametreleri ekleyin (örneğin: 'driverId=1')
-
+            var params = '0';
             xhr.send(params);
         }
 

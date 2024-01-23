@@ -42,12 +42,40 @@ public class RegisterServlet extends HttpServlet {
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
+
+            // Alanların maksimum uzunluk kontrolü (45 karakter)
+            if (name.length() > 45 || email.length() > 45 || password.length() > 45) {
+                String errorMessage = "Alanlar en fazla 45 karakter olmalıdır.";
+                request.setAttribute("RegError", errorMessage);
+                request.getRequestDispatcher("registration.jsp").forward(request, response);
+                return;
+            }
+
+            // Boş alan kontrolü
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                String errorMessage = "Lütfen tüm alanları doldurun.";
+                request.setAttribute("RegError", errorMessage);
+                request.getRequestDispatcher("registration.jsp").forward(request, response);
+                return;
+            }
+
+            // Email format kontrolü
+            if (!isValidEmail(email) || email.contains(" ")) {
+                String errorMessage = "Geçersiz e-posta formatı veya boşluk içeremez.";
+                request.setAttribute("RegError", errorMessage);
+                request.getRequestDispatcher("registration.jsp").forward(request, response);
+                return;
+            }
             //make user object
             User userModel = new User(name, email, password);
             //create a database model
             UserDatabase regUser = new UserDatabase(ConnectionPro.getConnection());
             if (regUser.saveUser(userModel)) {
-                response.sendRedirect("index.jsp");
+                // Başarılı giriş durumunu gönder
+                out.println("<script>alert('Başarılı kayıt!'); window.location.href='login.jsp';</script>");
+                // Oturumu geçersiz kıl
+                HttpSession session = request.getSession();
+                session.invalidate();
             } else {
                 String errorMessage = "User Available";
                 HttpSession regSession = request.getSession();
@@ -98,5 +126,14 @@ public class RegisterServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."
+                + "[a-zA-Z0-9_+&*-]+)*@"
+                + "(?:[a-zA-Z0-9-]+\\.)+[a-z"
+                + "A-Z]{2,7}$";
+
+        return email.matches(emailRegex);
+    }
 
 }

@@ -12,13 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-       
+        <h1>404 - Sayfa Bulunamadı</h1>
+        <p>Üzgünüz, istediğiniz sayfa bulunamadı.</p>
+        <p>Lütfen başka bir sayfaya gitmek için <a href="AnaSayfa.jsp">buraya tıklayın</a> veya ana sayfaya dönmek için tarayıcınızın geri butonunu kullanın.</p>
+        <p>Yardıma ihtiyacınız varsa lütfen bizimle iletişime geçin: info@webprojem.com</p>
     </body>
-      <script type="text/javascript">
-        window.onload = function() {
-            alert("Sürücü durumu güncellenemedi. Bir hata oluştu.");
-            // Burada istediğiniz diğer işlemleri yapabilirsiniz
-        };
-    </script>
-    
+
+
 </html>

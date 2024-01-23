@@ -1,4 +1,4 @@
-/*
+        /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -54,7 +54,6 @@ public class UserDatabase {
                 user.setName(rs.getString("name"));
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
-                user.setType(rs.getString("type"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,30 +124,7 @@ public class UserDatabase {
         return assignedDriver;
     }
 
-    // for Assign driver when a user receives a call
-    /* public Driver getAvailableDriver() {
-        Driver driver = null;
-        try {
-            String query = "SELECT * FROM driver";
-            PreparedStatement pst = this.con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-
-            while (rs.next()) {
-                if (rs.getInt("avaible") == 0) {
-                    driver = new Driver(rs.getInt("id"), rs.getInt("avaible"), rs.getString("name"), rs.getString("plate"));
-                    // Sürücüyü müsait olmayan olarak işaretle
-                    String updateQuery = "UPDATE driver SET avaible = 1 WHERE id = ?";
-                    PreparedStatement updatePst = this.con.prepareStatement(updateQuery);
-                    updatePst.setInt(0, driver.getID());
-                    updatePst.executeUpdate();
-                    break; // Müsait sürücü bulunduğunda döngüden çık
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return driver;
-    }*/
+   
     public List<Driver> getAllDrivers() {
         List<Driver> driverList = new ArrayList<>();
         String sql = "SELECT * FROM driver";
@@ -181,14 +157,48 @@ public class UserDatabase {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-              
                 return true; // Eşleşme var
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false; // Eşleşme yok
+        
+    }
+
+
+
+    public boolean isExistingUser(String email) {
+        try {
+            // Veritabanınıza bağlanın (bu örnek için "con" adında bir Connection değişkeni varsayalım)
+
+            String query = "SELECT COUNT(*) FROM user WHERE email = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            int count = 0;
+            if (resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+
+            return count > 0; // Eğer count 0'dan büyükse, e-posta var demektir.
+
+        } catch (SQLException e) {
+            e.printStackTrace(); // Hata durumunda hata bilgilerini yazdırabilirsiniz.
+            return false; // Bir hata oluştuğunda false döndürülebilir.
+        }
+    }
+       public boolean updateDriverAvailabilityToZero(int driverID) {
+    try {
+        String query = "UPDATE driver SET avaible = 0 WHERE id = ?";
+        PreparedStatement pst = this.con.prepareStatement(query);
+        pst.setInt(1, driverID);
+        int rowsUpdated = pst.executeUpdate();
+        return rowsUpdated > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
     }
 }
-
-
+}

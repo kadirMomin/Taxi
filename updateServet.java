@@ -4,26 +4,18 @@
  */
 package newpackage;
 
-import com.Driver;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author hp
  */
-public class driverServet extends HttpServlet {
+public class updateServet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,45 +34,31 @@ public class driverServet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet driverServet</title>");
+            out.println("<title>Servlet updateServet</title>");
             out.println("</head>");
             out.println("<body>");
+            //  out.println("<h1>Servlet updateServet at " + request.getContextPath() + "</h1>");
 
-            String name = request.getParameter("name");
-            String plate = request.getParameter("plate");
-            boolean isValidInput = !(name.trim().isEmpty() || plate.trim().isEmpty()); // Boşluk kontrolü
+            String bosTayimButton = request.getParameter("bosTayimButton");
+            if (bosTayimButton != null) {
+                // Sürücünün ID'sini almak için örnek bir parametre
+                int driverID = (int) request.getSession().getAttribute("isValidDriver");
 
-            if (isValidInput) {
-                UserDatabase userDb = new UserDatabase(ConnectionPro.getConnection());
-                boolean isValidDriver = userDb.validateDriver(name, plate);
-                if (isValidDriver) {
-                    // Kullanıcı giriş yapıldığında veya kullanıcı türü belirlendiğinde
-                    String userType = "driver"; // veya "user" olarak belirlenmesi gereken kullanıcı tipi
-                    HttpSession session1 = request.getSession();
-                    session1.setAttribute("userType", userType);
-                    
-                    HttpSession session = request.getSession(true);
-                    session.setAttribute("isValidDriver", isValidDriver);
-                    // Çerez oluştur
-                    Cookie driverCookie = new Cookie("driverCookie", "validDriver");
-                    // Çerezin ömrünü ayarla (örneğin, 1 saat)
-                    driverCookie.setMaxAge(3600);
-                    // Çerezi yanıtta gönder
-                    response.addCookie(driverCookie);
-                    // out.println("<script>alert('Başarılı giriş!');</script>");
-                    out.println("<script>alert('Başarılı giriş!'); window.location.href='Driver.jsp';</script>");// Eşleşme varsa Driver sayfasına yönlendir
+                // Sürücü durumunu güncelle
+                UserDatabase db = new UserDatabase(ConnectionPro.getConnection());
+                boolean updated = db.updateDriverAvailabilityToZero(driverID);
+
+                if (updated) {
+                    // Durum güncellendiğinde yapılacak işlemler
+                    out.println("<script>alert('Sürücü durumu güncellendi.'); window.location.href='Driver.jsp';</script>");
                 } else {
-                    out.println("<script>alert('Geçersiz sürücü bilgileri. Lütfen doğru bilgileri girin.'); window.location.href='Driverlogin.jsp';</script>");
+                    // Güncelleme başarısız olduğunda yapılacak işlemler
+                    out.println("<script>alert('Sürücü durumu güncellenemedi.'); window.location.href='Driver.jsp';</script>");
                 }
-            } else {
-                out.println("<script>alert('Boşluk veya yanlış giriş! Lütfen tüm alanları doldurun.'); window.location.href='Driverlogin.jsp';</script>");
-
             }
-
             out.println("</body>");
             out.println("</html>");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

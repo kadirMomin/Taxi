@@ -9,11 +9,15 @@
 <%@page import="newpackage.ConnectionPro"%>
 <%@page import="newpackage.UserDatabase"%>
 <%@page import="com.Driver"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
 <%@ page import="javax.servlet.http.HttpSession" %>
 
 <!DOCTYPE html>
+
 <%
+    
     if (session.getAttribute("user") == null) {
         // Kullanıcı giriş yapmamış, giriş sayfasına yönlendir
         response.sendRedirect("login.jsp");
@@ -92,7 +96,7 @@
         </div><br><br><br><br><br>
         <div class="taxi-form-container">
 
-            <h2>Taksi Çağırmak için Aşağıdaki Formu yollanın </h2>
+            <h2>Taksi Çağırmak için Aşağıdaki Formu Doldurmanız gerekiyor </h2>
             <form action="CallServet" method="POST">
                 <table class="table taxi-table">
                     <tr>
@@ -117,13 +121,12 @@
             </form>
             <p>
                 <%
+                    
                     String assignedDriverInfo = (String) session.getAttribute("assignedDriverInfo");
                     if (assignedDriverInfo != null) {
                         out.print(assignedDriverInfo);
                         session.removeAttribute("assignedDriverInfo");// Bilgiyi gösterdikten sonra kaldır
-                    } else {
-                        out.print("bos surucumuz yok olursa birazdan bildiriz");
-                    }
+                    } 
                 %>
 
             </p>
